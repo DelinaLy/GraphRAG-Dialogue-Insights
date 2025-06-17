@@ -1,0 +1,65 @@
+cff-version: 1.2.0
+title: GraphRAG Dialogue Insights (GDI)
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - given-names: Delina
+    family-names: Ly
+    email: dly@vxcompany.com
+    affiliation: 'VX Company, Utrecht University'
+    orcid: 'https://orcid.org/0000-0002-7972-7530'
+  - given-names: Sruthi
+    family-names: Radhakrishnan
+    email: radhakrishnan@itemis.com
+    affiliation: itemis
+  - given-names: Fatma Başak
+    family-names: Aydemir
+    email: f.b.aydemir@uu.nl
+    affiliation: Utrecht University
+    orcid: 'https://orcid.org/0000-0003-3833-3997'
+  - given-names: Fabiano
+    family-names: Dalpiaz
+    email: f.dalpiaz@uu.nl
+    affiliation: Utrecht University
+    orcid: 'https://orcid.org/0000-0003-4480-3887'
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.15173244
+    description: ' The DOI of the corresponding release of GraphRAG Dialogue Insights on Zenodo.'
+repository-code: 'https://github.com/DelinaLy/GDI/'
+abstract: >+
+  This repository contains the source code of  GraphRAG
+  Dialogue Insights (GDI). 
+
+
+  GDI enables users to query work items from issue-tracking
+  systems (represented as a knowledge graph) using natural
+  language. In addition to a natural language response, GDI
+  returns supporting information to help users understand
+  how the LLM queries the knowledge graph. The technologies
+  used in this repository, such as Streamlit, Neo4j, and
+  Cypher, are modular and can be interchanged.
+
+
+  You can use this repository to:
+  1. Interact with GDI to determine its suitability for your
+  context.
+  2. Connect your own knowledge graph and query work items
+  using natural language.
+  3. Reproduce the results presented in the "Related
+  Publication."
+
+  Note: Note: We provide the open-source knowledge graph. Due to confidentiality agreements,
+  we are unable to share the proprietary knowledge graph used in our study. 
+  To use GDI with your own data, you have to create a custom knowledge graph. Our paper offers
+  an overview of the knowledge graph construction process. For more detailed instructions, refer to
+  the book "How to Build a Knowledge Graph" by Fensel et al. https://link.springer.com/chapter/10.1007/978-3-030-37439-6_2.
+
+keywords:
+  - Issue Tracking Systems
+  - Large Language Models
+  - Prompt Engineering
+  - GraphRAG
+license: GPL-3.0-or-later

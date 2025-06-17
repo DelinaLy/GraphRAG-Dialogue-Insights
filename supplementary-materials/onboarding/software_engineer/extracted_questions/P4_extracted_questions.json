@@ -1,0 +1,10 @@
+[
+    "What are the microservices present in the system?",
+    "Which Microservices has External Dependency?",
+    "Which Microservices has Dependency?",
+    "Which Dependencies does InventoryService depend on?",
+    "Which Microservices does InventoryService depend on?",
+    "Which Microservices does InventoryService depend son?",
+    "What are the dependencies of InventoryService?",
+    "What Microservices does InventoryService have?"
+]

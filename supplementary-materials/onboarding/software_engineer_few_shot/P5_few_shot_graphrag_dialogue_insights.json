@@ -1,0 +1,90 @@
+[
+    {
+        "role": "User",
+        "content": "What is the biggest team?"
+    },
+    {
+        "role": "GDI",
+        "content": "The biggest team is TeamA with a size of 2.",
+        "query": "MATCH (t:Team)<-[:PART_OF]-(p:Person)\n\nWITH t, COUNT(p) AS teamSize\n\nORDER BY teamSize DESC\n\nRETURN t.name AS TeamName, teamSize \nLIMIT 1;",
+        "context": [
+            {
+                "TeamName": "TeamA",
+                "teamSize": 2
+            }
+        ]
+    },
+    {
+        "role": "User",
+        "content": "What are all the biggest teams?"
+    },
+    {
+        "role": "GDI",
+        "content": "The biggest teams are TeamA and TeamB with 2 members each.",
+        "query": "MATCH (t:Team)<-[:PART_OF]-(p:Person)\n\nWITH t, COUNT(p) AS teamSize\n\nORDER BY teamSize DESC\n\nRETURN t.name AS TeamName, teamSize\n\nLIMIT 10;",
+        "context": [
+            {
+                "TeamName": "TeamA",
+                "teamSize": 2
+            },
+            {
+                "TeamName": "TeamB",
+                "teamSize": 2
+            },
+            {
+                "TeamName": "TeamC",
+                "teamSize": 1
+            },
+            {
+                "TeamName": "TeamD",
+                "teamSize": 1
+            }
+        ]
+    },
+    {
+        "role": "User",
+        "content": "How many people are working on OrderService?"
+    },
+    {
+        "role": "GDI",
+        "content": "There are currently 2 people working on OrderService.",
+        "query": "MATCH (m:Microservice {name: 'OrderService'})-[:MAINTAINED_BY]->(t:Team)<-[:PART_OF]-(p:Person)\n\nRETURN COUNT(p) AS PeopleWorkingOnOrderService;",
+        "context": [
+            {
+                "PeopleWorkingOnOrderService": 2
+            }
+        ]
+    },
+    {
+        "role": "User",
+        "content": "How many Persons are working on OrderService?"
+    },
+    {
+        "role": "GDI",
+        "content": "There are currently 2 people working on OrderService.",
+        "query": "MATCH (m:Microservice {name: 'OrderService'})-[:MAINTAINED_BY]->(t:Team)<-[:PART_OF]-(p:Person)\n\nRETURN COUNT(p) AS PersonCount;",
+        "context": [
+            {
+                "PersonCount": 2
+            }
+        ]
+    },
+    {
+        "role": "User",
+        "content": "How many Persons are working on OrderService  and who are they?"
+    },
+    {
+        "role": "GDI",
+        "content": "There are 2 people working on OrderService. They are Bob and Frank.",
+        "query": "MATCH (m:Microservice {name: 'OrderService'})-[:MAINTAINED_BY]->(t:Team)<-[:PART_OF]-(p:Person)\n\nRETURN COUNT(p) AS PersonCount, COLLECT(p.name) AS TeamMembers;",
+        "context": [
+            {
+                "PersonCount": 2,
+                "TeamMembers": [
+                    "Bob",
+                    "Frank"
+                ]
+            }
+        ]
+    }
+]

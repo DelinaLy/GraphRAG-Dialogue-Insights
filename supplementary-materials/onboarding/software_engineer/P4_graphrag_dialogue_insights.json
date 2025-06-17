@@ -1,0 +1,83 @@
+[
+    {
+        "role": "user",
+        "content": "What are the microservices present in the system?"
+    },
+    {
+        "role": "bot",
+        "content": "The microservices present in the system are:\n\n* CatalogService\n* OrderService\n* UserService\n* PaymentService\n* InventoryService\n* ShippingService\n* ReviewService\n* RecommendationService\n* AuthService \n\nThese services utilize various technologies such as Java, Python, Go, and Node.js.",
+        "queryContext": "[{'query': 'MATCH (m:Microservice) RETURN m.name AS name, m.technology AS technology'}, {'context': [{'name': 'CatalogService', 'technology': 'Java'}, {'name': 'OrderService', 'technology': 'Python'}, {'name': 'UserService', 'technology': 'Go'}, {'name': 'PaymentService', 'technology': 'Node.js'}, {'name': 'InventoryService', 'technology': 'Java'}, {'name': 'ShippingService', 'technology': 'Python'}, {'name': 'ReviewService', 'technology': 'Go'}, {'name': 'RecommendationService', 'technology': 'Node.js'}, {'name': 'AuthService', 'technology': 'Node.js'}, {'name': 'CatalogService', 'technology': 'Java'}]}]"
+    },
+    {
+        "role": "user",
+        "content": "Which Microservices has External Dependency?"
+    },
+    {
+        "role": "bot",
+        "content": "There are no microservices with external dependencies.",
+        "queryContext": "[{'query': \"MATCH (m:Microservice)-[:DEPENDS_ON]->(d:Dependency)\\nWHERE d.type = 'External'\\nRETURN m.name AS microservice_name\"}, {'context': []}]"
+    },
+    {
+        "role": "user",
+        "content": "Which Microservices has Dependency?"
+    },
+    {
+        "role": "bot",
+        "content": "The microservices that have dependencies are AuthService, InventoryService, PaymentService, UserService, OrderService, CatalogService, ReviewService, ShippingService, RecommendationService.",
+        "queryContext": "[{'query': 'MATCH (m:Microservice)-[:DEPENDS_ON]->(d:Dependency)\\nRETURN m.name AS microservice_name'}, {'context': [{'microservice_name': 'AuthService'}, {'microservice_name': 'InventoryService'}, {'microservice_name': 'PaymentService'}, {'microservice_name': 'UserService'}, {'microservice_name': 'OrderService'}, {'microservice_name': 'CatalogService'}, {'microservice_name': 'ReviewService'}, {'microservice_name': 'ShippingService'}, {'microservice_name': 'RecommendationService'}, {'microservice_name': 'AuthService'}]}]"
+    },
+    {
+        "role": "user",
+        "content": "Which Dependencies does InventoryService depend on?"
+    },
+    {
+        "role": "bot",
+        "content": "InventoryService depends on two Database dependencies, both of which use SQL.",
+        "queryContext": "[{'query': 'MATCH (m:Microservice {name: \"InventoryService\"})-[:DEPENDS_ON]->(d)\\nRETURN d'}, {'context': [{'d': {'name': 'Database', 'type': 'SQL'}}, {'d': {'name': 'Database', 'type': 'SQL'}}]}]"
+    },
+    {
+        "role": "user",
+        "content": "Which Microservices does InventoryService depend on?"
+    },
+    {
+        "role": "bot",
+        "content": "The InventoryService depends on the Database microservice.",
+        "queryContext": "[{'query': 'MATCH (m:Microservice {name: \"InventoryService\"})-[:DEPENDS_ON]->(d)\\nRETURN d.name AS dependentMicroservice, m.name AS inventoryServiceName'}, {'context': [{'dependentMicroservice': 'Database', 'inventoryServiceName': 'InventoryService'}, {'dependentMicroservice': 'Database', 'inventoryServiceName': 'InventoryService'}]}]"
+    },
+    {
+        "role": "user",
+        "content": "Which Microservices does InventoryService depend son?"
+    },
+    {
+        "role": "bot",
+        "content": "The InventoryService depends on the Database microservice.",
+        "queryContext": "[{'query': 'MATCH (m:Microservice {name: \"InventoryService\"})-[:DEPENDS_ON]->(d)\\nRETURN d.name AS dependentMicroservice'}, {'context': [{'dependentMicroservice': 'Database'}, {'dependentMicroservice': 'Database'}]}]"
+    },
+    {
+        "role": "user",
+        "content": "Which Dependencies does InventoryService depend on?"
+    },
+    {
+        "role": "bot",
+        "content": "InventoryService depends on two Database dependencies, both of which use SQL.",
+        "queryContext": "[{'query': 'MATCH (m:Microservice {name: \"InventoryService\"})-[:DEPENDS_ON]->(d)\\nRETURN d'}, {'context': [{'d': {'name': 'Database', 'type': 'SQL'}}, {'d': {'name': 'Database', 'type': 'SQL'}}]}]"
+    },
+    {
+        "role": "user",
+        "content": "What are the dependencies of InventoryService?"
+    },
+    {
+        "role": "bot",
+        "content": "The dependencies of InventoryService include Database with SQL type.",
+        "queryContext": "[{'query': 'MATCH (m:Microservice {name: \"InventoryService\"})-[:DEPENDS_ON]->(d) RETURN d'}, {'context': [{'d': {'name': 'Database', 'type': 'SQL'}}, {'d': {'name': 'Database', 'type': 'SQL'}}]}]"
+    },
+    {
+        "role": "user",
+        "content": "What Microservices does InventoryService have?"
+    },
+    {
+        "role": "bot",
+        "content": "The InventoryService has a dependency on the Database microservice. It is used by 2 other services.",
+        "queryContext": "[{'query': 'MATCH (m:Microservice {name: \"InventoryService\"})-[:DEPENDS_ON]->(d)\\nRETURN d.name AS dependentMicroservice, COUNT(d) AS count'}, {'context': [{'dependentMicroservice': 'Database', 'count': 2}]}]"
+    }
+]

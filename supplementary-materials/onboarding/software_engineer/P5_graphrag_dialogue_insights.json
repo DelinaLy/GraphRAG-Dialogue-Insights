@@ -1,0 +1,62 @@
+[
+    {
+        "role": "user",
+        "content": "What is the biggest team?"
+    },
+    {
+        "role": "bot",
+        "content": "The biggest team is TeamA with a total of 2 members.",
+        "queryContext": "[{'query': 'MATCH (t:Team)\\nRETURN t.name AS name, COUNT(t) AS count\\nORDER BY count DESC\\nLIMIT 1'}, {'context': [{'name': 'TeamA', 'count': 2}]}]"
+    },
+    {
+        "role": "user",
+        "content": "What are all the biggest teams?"
+    },
+    {
+        "role": "bot",
+        "content": "An error occurred: Generated Cypher Statement is not valid\n{code: Neo.ClientError.Statement.SyntaxError} {message: A pattern expression should only be used in order to test the existence of a pattern. It can no longer be used inside the function size(), an alternative is to replace size() with COUNT {}. (line 2, column 14 (offset: 28))\n\"WITH t, size((t)<-[:MEMBER_OF]-()) AS teamSize\"\n              ^}"
+    },
+    {
+        "role": "user",
+        "content": "What are all the biggest teams?"
+    },
+    {
+        "role": "bot",
+        "content": "An error occurred: Generated Cypher Statement is not valid\n{code: Neo.ClientError.Statement.SyntaxError} {message: A pattern expression should only be used in order to test the existence of a pattern. It can no longer be used inside the function size(), an alternative is to replace size() with COUNT {}. (line 2, column 14 (offset: 28))\n\"WITH t, size((t)<-[:MEMBER_OF]-()) AS teamSize\"\n              ^}"
+    },
+    {
+        "role": "user",
+        "content": "What are all the biggest teams?"
+    },
+    {
+        "role": "bot",
+        "content": "An error occurred: Generated Cypher Statement is not valid\n{code: Neo.ClientError.Statement.SyntaxError} {message: A pattern expression should only be used in order to test the existence of a pattern. It can no longer be used inside the function size(), an alternative is to replace size() with COUNT {}. (line 2, column 14 (offset: 28))\n\"WITH t, size((t)<-[:MEMBER_OF]-()) AS teamSize\"\n              ^}"
+    },
+    {
+        "role": "user",
+        "content": "How many people are working on OrderService?"
+    },
+    {
+        "role": "bot",
+        "content": "There are currently no people working on OrderService.",
+        "queryContext": "[{'query': 'MATCH (t:Team {name: \"OrderService\"})<-[:LEAD_OF|MEMBER_OF]-(p:Person)\\nRETURN COUNT(p) AS count'}, {'context': [{'count': 0}]}]"
+    },
+    {
+        "role": "user",
+        "content": "How many Persons are working on OrderService?"
+    },
+    {
+        "role": "bot",
+        "content": "There are 4 persons working on OrderService.",
+        "queryContext": "[{'query': 'MATCH (p:Person)-[:MEMBER_OF]->(t:Team)<-[:MAINTAINED_BY]-(m:Microservice {name: \"OrderService\"}) RETURN COUNT(p)'}, {'context': [{'COUNT(p)': 4}]}]"
+    },
+    {
+        "role": "user",
+        "content": "How many Persons are working on OrderService  and who are they?"
+    },
+    {
+        "role": "bot",
+        "content": "There are two persons working on OrderService: Frank and Bob.",
+        "queryContext": "[{'query': 'MATCH (p:Person)-[:MEMBER_OF]->(t:Team)<-[:MAINTAINED_BY]-(m:Microservice {name: \"OrderService\"}) \\nRETURN COUNT(p), p.name AS PersonName'}, {'context': [{'COUNT(p)': 2, 'PersonName': 'Frank'}, {'COUNT(p)': 2, 'PersonName': 'Bob'}]}]"
+    }
+]

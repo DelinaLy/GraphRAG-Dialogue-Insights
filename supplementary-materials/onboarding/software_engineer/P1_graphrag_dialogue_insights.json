@@ -1,0 +1,47 @@
+[
+    {
+        "role": "user",
+        "content": "Is there a relationship between UserService and CatalogService"
+    },
+    {
+        "role": "bot",
+        "content": "There is no relationship between UserService and CatalogService.",
+        "queryContext": "[{'query': 'MATCH (u:Microservice {name: \"UserService\"})-[]-(c:Microservice {name: \"CatalogService\"}) RETURN u, c'}, {'context': []}]"
+    },
+    {
+        "role": "user",
+        "content": "Which team member is working on which project."
+    },
+    {
+        "role": "bot",
+        "content": "There is no team member assigned to any project.",
+        "queryContext": "[{'query': ''}, {'context': []}]"
+    },
+    {
+        "role": "user",
+        "content": "Which team memembers are working on RecommendationService?"
+    },
+    {
+        "role": "bot",
+        "content": "There are no team members currently working on RecommendationService.",
+        "queryContext": "[{'query': ''}, {'context': []}]"
+    },
+    {
+        "role": "user",
+        "content": "Which Persons are working on RecommendationService?"
+    },
+    {
+        "role": "bot",
+        "content": "The persons working on RecommendationService are Diana.",
+        "queryContext": "[{'query': 'MATCH (p:Person)-[:MEMBER_OF]->(t:Team)<-[:MAINTAINED_BY]-(m:Microservice {name: \"RecommendationService\"}) RETURN p.name AS PersonName'}, {'context': [{'PersonName': 'Diana'}, {'PersonName': 'Diana'}]}]"
+    },
+    {
+        "role": "user",
+        "content": "Which services Diana is working on?"
+    },
+    {
+        "role": "bot",
+        "content": "Diana is currently working on the Recommendation Service and the Payment Service.",
+        "queryContext": "[{'query': 'MATCH (p:Person {name: \"Diana\"})-[:MEMBER_OF]->(t:Team)<-[:ASSIGNED_TO]-(task:Task)-[:LINKED_TO]->(ms:Microservice) RETURN ms.name AS ServiceName'}, {'context': [{'ServiceName': 'RecommendationService'}, {'ServiceName': 'PaymentService'}, {'ServiceName': 'PaymentService'}, {'ServiceName': 'RecommendationService'}]}]"
+    }
+]

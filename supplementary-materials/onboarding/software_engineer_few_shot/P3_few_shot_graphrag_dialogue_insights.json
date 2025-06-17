@@ -1,0 +1,259 @@
+[
+    {
+        "role": "User",
+        "content": "What is the Microservice with most tasks?"
+    },
+    {
+        "role": "GDI",
+        "content": "The Microservice with the most tasks is AuthService, which has 2 tasks.",
+        "query": "MATCH (m:Microservice)<-[:LINKED_TO]-(t:Task)\n\nWITH m, COUNT(t) AS taskCount\n\nORDER BY taskCount DESC\n\nRETURN m.name AS Microservice, taskCount",
+        "context": [
+            {
+                "Microservice": "AuthService",
+                "taskCount": 2
+            },
+            {
+                "Microservice": "CatalogService",
+                "taskCount": 1
+            },
+            {
+                "Microservice": "OrderService",
+                "taskCount": 1
+            },
+            {
+                "Microservice": "UserService",
+                "taskCount": 1
+            },
+            {
+                "Microservice": "PaymentService",
+                "taskCount": 1
+            },
+            {
+                "Microservice": "InventoryService",
+                "taskCount": 1
+            },
+            {
+                "Microservice": "ShippingService",
+                "taskCount": 1
+            },
+            {
+                "Microservice": "ReviewService",
+                "taskCount": 1
+            },
+            {
+                "Microservice": "RecommendationService",
+                "taskCount": 1
+            }
+        ]
+    },
+    {
+        "role": "User",
+        "content": "What is the Microservice with Maximum tasks?"
+    },
+    {
+        "role": "GDI",
+        "content": "The microservice with the maximum number of tasks is AuthService, which has 2 tasks.",
+        "query": "MATCH (m:Microservice)<-[:LINKED_TO]-(t:Task)\n\nWITH m, COUNT(t) AS taskCount\n\nORDER BY taskCount DESC\n\nRETURN m.name AS Microservice, taskCount",
+        "context": [
+            {
+                "Microservice": "AuthService",
+                "taskCount": 2
+            },
+            {
+                "Microservice": "CatalogService",
+                "taskCount": 1
+            },
+            {
+                "Microservice": "OrderService",
+                "taskCount": 1
+            },
+            {
+                "Microservice": "UserService",
+                "taskCount": 1
+            },
+            {
+                "Microservice": "PaymentService",
+                "taskCount": 1
+            },
+            {
+                "Microservice": "InventoryService",
+                "taskCount": 1
+            },
+            {
+                "Microservice": "ShippingService",
+                "taskCount": 1
+            },
+            {
+                "Microservice": "ReviewService",
+                "taskCount": 1
+            },
+            {
+                "Microservice": "RecommendationService",
+                "taskCount": 1
+            }
+        ]
+    },
+    {
+        "role": "User",
+        "content": "Give me the Microservice with most tasks"
+    },
+    {
+        "role": "GDI",
+        "content": "The microservice with the most tasks is AuthService, which has 2 tasks.",
+        "query": "MATCH (m:Microservice)<-[:LINKED_TO]-(t:Task)\n\nWITH m, COUNT(t) AS taskCount\n\nORDER BY taskCount DESC\n\nRETURN m.name AS Microservice, taskCount",
+        "context": [
+            {
+                "Microservice": "AuthService",
+                "taskCount": 2
+            },
+            {
+                "Microservice": "CatalogService",
+                "taskCount": 1
+            },
+            {
+                "Microservice": "OrderService",
+                "taskCount": 1
+            },
+            {
+                "Microservice": "UserService",
+                "taskCount": 1
+            },
+            {
+                "Microservice": "PaymentService",
+                "taskCount": 1
+            },
+            {
+                "Microservice": "InventoryService",
+                "taskCount": 1
+            },
+            {
+                "Microservice": "ShippingService",
+                "taskCount": 1
+            },
+            {
+                "Microservice": "ReviewService",
+                "taskCount": 1
+            },
+            {
+                "Microservice": "RecommendationService",
+                "taskCount": 1
+            }
+        ]
+    },
+    {
+        "role": "User",
+        "content": "Which tasks are unassigned?"
+    },
+    {
+        "role": "GDI",
+        "content": "There are no unassigned tasks.",
+        "query": "MATCH (t:Task)-[r:ASSIGNED_TO]->()\n\nWHERE r IS NULL\n\nRETURN t.name AS TaskName;",
+        "context": []
+    },
+    {
+        "role": "User",
+        "content": "How many tasks are in progress and what are they?"
+    },
+    {
+        "role": "GDI",
+        "content": "There are 3 tasks currently in progress. The names of these tasks are Feature Add, Update, and Recommendation Feature.",
+        "query": "MATCH (t:Task)\n\nWHERE t.status = 'in progress'\n\nRETURN COUNT(t) AS InProgressTaskCount, COLLECT(t.name) AS TaskNames;",
+        "context": [
+            {
+                "InProgressTaskCount": 3,
+                "TaskNames": [
+                    "FeatureAdd",
+                    "Update",
+                    "RecommendationFeature"
+                ]
+            }
+        ]
+    },
+    {
+        "role": "User",
+        "content": "How many tasks are In Progress and what are they?"
+    },
+    {
+        "role": "GDI",
+        "content": "There are 3 tasks that are currently in progress. The names of these tasks are Feature Add, Update, and Recommendation Feature.",
+        "query": "MATCH (t:Task)\n\nWHERE t.status = 'in progress'\n\nRETURN COUNT(t) AS InProgressTaskCount, COLLECT(t.name) AS TaskNames;",
+        "context": [
+            {
+                "InProgressTaskCount": 3,
+                "TaskNames": [
+                    "FeatureAdd",
+                    "Update",
+                    "RecommendationFeature"
+                ]
+            }
+        ]
+    },
+    {
+        "role": "User",
+        "content": "Which Person has the lowest task assigned?"
+    },
+    {
+        "role": "GDI",
+        "content": "The person with the lowest task assigned is Bob, Charlie, Diana, and Frank, as they each have 2 tasks.",
+        "query": "MATCH (p:Person)-[:PART_OF]->(t:Team)<-[:ASSIGNED_TO]-(task:Task)\n\nWITH p, COUNT(task) AS taskCount\n\nORDER BY taskCount ASC\n\nRETURN p.name AS Person, taskCount",
+        "context": [
+            {
+                "Person": "Bob",
+                "taskCount": 2
+            },
+            {
+                "Person": "Charlie",
+                "taskCount": 2
+            },
+            {
+                "Person": "Diana",
+                "taskCount": 2
+            },
+            {
+                "Person": "Frank",
+                "taskCount": 2
+            },
+            {
+                "Person": "Alice",
+                "taskCount": 4
+            },
+            {
+                "Person": "Eva",
+                "taskCount": 4
+            }
+        ]
+    },
+    {
+        "role": "User",
+        "content": "Which Tasks currently do not have a description?"
+    },
+    {
+        "role": "GDI",
+        "content": "There are no tasks currently without a description.",
+        "query": "MATCH (t:Task)\n\nWHERE t.description IS NULL OR t.description = ''\n\nRETURN t.name AS TaskName;",
+        "context": []
+    },
+    {
+        "role": "User",
+        "content": "What are the most similar Tasks?"
+    },
+    {
+        "role": "GDI",
+        "content": "The most similar tasks to \"ImproveSecurity\" and \"Optimize\" are related to improving security and optimizing performance. Both tasks share a common microservice called \"AuthService\", indicating that they may be connected in some way. The similarity between these tasks is approximately 55.88%.",
+        "query": "MATCH (t1:Task)-[:LINKED_TO]->(m:Microservice)<-[:LINKED_TO]-(t2:Task)\n\nWHERE t1 <> t2\n\nWITH t1, t2, m, apoc.text.sorensenDiceSimilarity(t1.description, t2.description) AS similarity\n\nRETURN t1.name AS Task1, t2.name AS Task2, m.name AS CommonMicroservice, similarity\n\nORDER BY similarity DESC\n\nLIMIT 10;",
+        "context": [
+            {
+                "Task1": "ImproveSecurity",
+                "Task2": "Optimize",
+                "CommonMicroservice": "AuthService",
+                "similarity": 0.5588235294117647
+            },
+            {
+                "Task1": "Optimize",
+                "Task2": "ImproveSecurity",
+                "CommonMicroservice": "AuthService",
+                "similarity": 0.5588235294117647
+            }
+        ]
+    }
+]

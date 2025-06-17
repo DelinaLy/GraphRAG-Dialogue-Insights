@@ -1,0 +1,175 @@
+[
+    {
+        "role": "User",
+        "content": "What are the microservices present in the system?"
+    },
+    {
+        "role": "GDI",
+        "content": "The microservices present in the system are:\n\n1. CatalogService\n2. OrderService\n3. UserService\n4. PaymentService\n5. InventoryService\n6. ShippingService\n7. ReviewService\n8. RecommendationService\n9. AuthService\n10. Database\n\nThese services work together to provide a comprehensive and scalable solution for managing various aspects of the system.",
+        "query": "MATCH (m:Microservice) \nRETURN m.name AS Microservice;",
+        "context": [
+            {
+                "Microservice": "CatalogService"
+            },
+            {
+                "Microservice": "OrderService"
+            },
+            {
+                "Microservice": "UserService"
+            },
+            {
+                "Microservice": "PaymentService"
+            },
+            {
+                "Microservice": "InventoryService"
+            },
+            {
+                "Microservice": "ShippingService"
+            },
+            {
+                "Microservice": "ReviewService"
+            },
+            {
+                "Microservice": "RecommendationService"
+            },
+            {
+                "Microservice": "AuthService"
+            },
+            {
+                "Microservice": "Database"
+            }
+        ]
+    },
+    {
+        "role": "User",
+        "content": "Which Microservices has External Dependency?"
+    },
+    {
+        "role": "GDI",
+        "content": "The Recommendation Service has an external dependency.",
+        "query": "MATCH (m:Microservice)-[:DEPENDS_ON]->(e:Microservice {name: 'ExternalAPI'})\n\nRETURN m.name AS Microservice, e.name AS ExternalDependency;",
+        "context": [
+            {
+                "Microservice": "RecommendationService",
+                "ExternalDependency": "ExternalAPI"
+            }
+        ]
+    },
+    {
+        "role": "User",
+        "content": "Which Microservices has Dependency?"
+    },
+    {
+        "role": "GDI",
+        "content": "The microservices that have dependencies are:\n\n* OrderService depends on PaymentService\n* OrderService depends on InventoryService\n* OrderService depends on ShippingService\n* CatalogService depends on ReviewService\n* CatalogService depends on RecommendationService\n* UserService depends on AuthService\n* PaymentService depends on AuthService\n* ShippingService depends on AuthService\n* CatalogService depends on Database\n* OrderService depends on Database",
+        "query": "MATCH (m:Microservice)-[:DEPENDS_ON]->(d:Microservice) \n\nRETURN m.name AS Microservice, d.name AS DependentMicroservice;",
+        "context": [
+            {
+                "Microservice": "OrderService",
+                "DependentMicroservice": "PaymentService"
+            },
+            {
+                "Microservice": "OrderService",
+                "DependentMicroservice": "InventoryService"
+            },
+            {
+                "Microservice": "OrderService",
+                "DependentMicroservice": "ShippingService"
+            },
+            {
+                "Microservice": "CatalogService",
+                "DependentMicroservice": "ReviewService"
+            },
+            {
+                "Microservice": "CatalogService",
+                "DependentMicroservice": "RecommendationService"
+            },
+            {
+                "Microservice": "UserService",
+                "DependentMicroservice": "AuthService"
+            },
+            {
+                "Microservice": "PaymentService",
+                "DependentMicroservice": "AuthService"
+            },
+            {
+                "Microservice": "ShippingService",
+                "DependentMicroservice": "AuthService"
+            },
+            {
+                "Microservice": "CatalogService",
+                "DependentMicroservice": "Database"
+            },
+            {
+                "Microservice": "OrderService",
+                "DependentMicroservice": "Database"
+            }
+        ]
+    },
+    {
+        "role": "User",
+        "content": "Which Dependencies does InventoryService depend on?"
+    },
+    {
+        "role": "GDI",
+        "content": "The InventoryService depends on the Database microservice.",
+        "query": "MATCH (i:Microservice {name: 'InventoryService'})-[:DEPENDS_ON]->(d:Microservice) \n\nRETURN d.name AS DependentMicroservice;",
+        "context": [
+            {
+                "DependentMicroservice": "Database"
+            }
+        ]
+    },
+    {
+        "role": "User",
+        "content": "Which Microservices does InventoryService depend on?"
+    },
+    {
+        "role": "GDI",
+        "content": "The InventoryService depends on the Database microservice.",
+        "query": "MATCH (i:Microservice {name: 'InventoryService'})-[r:DEPENDS_ON]->(m:Microservice) \n\nRETURN m.name AS DependentMicroservice;",
+        "context": [
+            {
+                "DependentMicroservice": "Database"
+            }
+        ]
+    },
+    {
+        "role": "User",
+        "content": "Which Microservices does InventoryService depend son?"
+    },
+    {
+        "role": "GDI",
+        "content": "The InventoryService depends on the Database microservice.",
+        "query": "MATCH (i:Microservice {name: 'InventoryService'})-[r:DEPENDS_ON]->(m:Microservice) \n\nRETURN m.name AS DependentMicroservice;",
+        "context": [
+            {
+                "DependentMicroservice": "Database"
+            }
+        ]
+    },
+    {
+        "role": "User",
+        "content": "What are the dependencies of InventoryService?"
+    },
+    {
+        "role": "GDI",
+        "content": "The InventoryService has a dependency on the Database microservice.",
+        "query": "MATCH (i:Microservice {name: 'InventoryService'})-[:DEPENDS_ON]->(d:Microservice) \n\nRETURN d.name AS DependentMicroservice;",
+        "context": [
+            {
+                "DependentMicroservice": "Database"
+            }
+        ]
+    },
+    {
+        "role": "User",
+        "content": "What Microservices does InventoryService have?"
+    },
+    {
+        "role": "GDI",
+        "content": "The InventoryService has no microservices associated with it.",
+        "query": "",
+        "context": []
+    }
+]
