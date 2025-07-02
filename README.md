@@ -229,12 +229,11 @@ Please follow the <a href="#3-installation-instructions">installation instructio
 We have provided a description of GDI's user interface in Section III in <a href="#6-related-publication">our paper</a>. A Cheat Sheet with example user questions, such as _"I want to fix a bug in [REPLACE WITH SERVICE NAME]. What are its dependencies?"_, along with guidelines (collapsable) are provided in the GDI's browser interface.  The user can explore the knowledge graph by running `MATCH (n)-[r]->(m) RETURN n, r, m` in the query window of Neo4j. This will provide an overview of the knowledge graph. 
 
 1. The user selects a stakeholder-based persona prompt and the preferred LLM from the dropdown buttons in the left sidebar of GDI.
-2. The user can type the question in the _input field_ and click on the _Send_ button to receive a response.
-3. The response consists of a) a natural language response, b) a corresponding Neo4j Query (which can be copied and run into Neo4j), and c) the retrieved context (which can be copied, collapsed, and expanded).
+2. The user can type the question in the _input field_ and click on the _Send_ button to receive a response. The response consists of a) a natural language response, b) a corresponding Neo4j Query (which can be copied and run into Neo4j), and c) the retrieved context (which can be copied, collapsed, and expanded).
 4. Based on the answer given by GDI, the user can ask other questions by repeating steps 2 and 3.
 5. The user can save the chat history by clicking on the _Save Session_ button. The saved files can be found in the folder [GDI/supplementary-materials/saved-logs](supplementary-materials/saved-logs).
 
-The video below provides a visual representation of steps 1, 2, and 3:
+The video below provides a visual representation of steps 1 and 2:
 
 https://github.com/user-attachments/assets/9eee107f-a8e9-470d-8899-1e52b4d1d6a1
 
