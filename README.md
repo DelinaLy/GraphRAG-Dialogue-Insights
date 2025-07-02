@@ -8,7 +8,6 @@ We introduce GDI, which enables users to query work items from issue-tracking sy
 Since GDI is based on GraphRAG, an LLM and a knowledge graph are essential components of a GDI instance, together with the GDI Core component that
 facilitates interaction among the components in GDI (see the sequence diagram below). 
 
-
 ![Sequence diagram](./supplementary-materials/sequence-diagram.png)
 
 The user selects a stakeholder-based persona prompt and the preferred LLM from the dropdown buttons in the left sidebar of GDI.
@@ -104,7 +103,6 @@ GDI/
 
 <br>
 
-
 | **Folder/file** | **Description** |
 |---------------|-----------------|
 | [GDI/](/)| The root folder of GDI, including the source code and supplementary materials.|
@@ -138,7 +136,6 @@ GDI/
 <p align="right">(<a href="#top">↑ Back to Top</a>)</p>
 
 <br>
-
 
 # 2. System Requirements 
 The following requirements must be met in order to use the artifacts in this repository:
@@ -200,7 +197,6 @@ Password: password (for your own instance, please use a secure password)
 6. Restart the instance to finish the plugin installation by clicking on the _restart_ button.
 7. Copy the script of [the original](src/knowledge-graph/original_version_knowledge_graph.txt), or [the improved version](src/knowledge-graph/improved_version_knowledge_graph.txt) of the knowledge graph, and paste it into the query window in Neo4j and run it. A success message _(e.g., "Creates X nodes, created X relationships, set X properties, added X labels")_ confirms that the knowledge graph has been created.
 
-
 ### B. Setting up Ollama
 1. Install [Ollama](https://ollama.com/).
 2. Install and run Llama3.1 by running the following command: `ollama run llama3.1`
@@ -226,7 +222,7 @@ You can open GDI in your browser by navigating to http://localhost:8501.
 # 4. Usage Instructions
 Please follow the <a href="#3-installation-instructions">installation instructions</a> to run GDI. 
 
-We have provided a description of GDI's user interface in Section III in <a href="#6-related-publication">our paper</a>. A Cheat Sheet (collapsible) with example user questions, such as _"I want to fix a bug in [REPLACE WITH SERVICE NAME]. What are its dependencies?"_, along with guidelines are provided in the GDI's browser interface.  The user can explore the knowledge graph by running `MATCH (n)-[r]->(m) RETURN n, r, m` in the query window of Neo4j. This will provide an overview of the knowledge graph. 
+We have provided a description of GDI's user interface in Section III in <a href="#6-related-publication">our paper</a>. A Cheat Sheet (collapsible) with example user questions, such as _"I want to fix a bug in [REPLACE WITH SERVICE NAME]. What are its dependencies?"_, along with guidelines are provided in the GDI's browser interface.  The user can explore the knowledge graph by running `MATCH (n)-[r]->(m) RETURN n, r, m` in the query window of Neo4j. This will provide an overview of the knowledge graph. To use GDI, please follow the steps below:
 
 1. The user selects a stakeholder-based persona prompt and the preferred LLM from the dropdown buttons in the left sidebar of GDI.
 2. The user can type the question in the _input field_ and click on the _Send_ button to receive a response. The response consists of a) a natural language response, b) a corresponding Neo4j Query (which can be copied and run into Neo4j), and c) the retrieved context (which can be copied, collapsed, and expanded).
@@ -246,7 +242,6 @@ For the trace link recovery, we have provided the following materials:
 For both use cases, we used [the same set of validation questions](supplementary-materials/Questions.docx) in the survey (onboarding use case) and the interviews (trace link recovery use case).
 
 <p align="right">(<a href="#top">↑ Back to Top</a>)</p>
-
 
 # 5. Steps to Reproduce 
 In this section, we describe how to reproduce the results from the individual user-centered validation sessions of the onboarding use case.
