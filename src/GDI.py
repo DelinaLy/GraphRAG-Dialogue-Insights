@@ -76,22 +76,23 @@ def chat_bot_invoke(chain):
 
     with col1:
         user_input = st.text_input("", placeholder="e.g., I want to fix a bug in [REPLACE WITH SERVICE NAME]. What are its dependencies?")
-        # To reproduce the results of the user-centered validation sessions, put the extracted questions in the user_inputs array, and comment line 77, e.g.,
-        #user_inputs = 
-        #[
+        # To reproduce the results from the user-centered validation sessions (onboarding use case), refer to "5. Steps to Reproduce" section in the README file. 
+        # 1) Comment lines 77 and 78, 2) Comment out line 81-88, and added the extracted questions in the `user_inputs` array 3) comment out line 95, and 4) run `GDI.py` and press the "Send" button.
+        # user_inputs = 
+        # [
         #     "Is there a relationship between UserService and CatalogService",
         #     "Which team member is working on which project.",
         #     "Which team memembers are working on RecommendationService?",
         #     "Which Persons are working on RecommendationService?",
         #     "Which services Diana is working on?"
-        #]
+        # ] 
 
         responses = []
 
     with col2:
         if st.button("Send"):
-            # uncomment line 92 to loop through the user
-            #for user_input in user_inputs:
+            # Comment out line 95 to loop through the questions provided in the `user_inputs` array.
+            # for user_input in user_inputs:
             st.session_state.chat_history.append({"role": "User", "content": user_input})
             with col1:
                 with st.spinner("Processing..."):
