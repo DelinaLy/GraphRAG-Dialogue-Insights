@@ -17,20 +17,16 @@ The user selects a stakeholder-based persona prompt and the preferred LLM from t
 - (M3) Based on this prompt, the LLM generates a query in the query language used for the knowledge graph. 
 - (M4) The GDI Core component queries the knowledge graph with this query.
 - (M5) The knowledge graph sends the structured data corresponding to the query as the retrieved context.
-- (M6) GDI Core constructs a [prompt](src/prompts/stakeholder_prompt.py) using this context, persona selected by the user, and question and sends it to the LLM.
+- (M6) GDI Core constructs a [prompt](src/prompts/stakeholder_prompt.py) using this context, the persona selected by the user, and a question, and sends it to the LLM.
 - (M7) GDI Core receives the NL response.
 - (M8) Finally, the output is presented to the user.
 
-The output consists of a) a natural language response to the question, b) the generated query used to query the knowledge graph, c) and the retrieved context as a result of the query. 
-
-The video below provides a visual representation of the described steps:
-
-https://github.com/user-attachments/assets/9eee107f-a8e9-470d-8899-1e52b4d1d6a1
+The output consists of a) a natural language response to the question, b) the generated query used to query the knowledge graph, and c) the retrieved context as a result of the query. 
 
 You can use this repository to:
 1. Interact with GDI to determine its suitability for your context.
 2. Use your own knowledge graph and query work items using GDI.
-3. Reproduce the results presented in the <a href="#6-related-publication"> Related Publication</a> section.
+3. Reproduce the results presented in the <a href="#6-related-publication">Related Publication</a> by following the steps outlined in the <a href="#5-steps-to-reproduce">Steps to Reproduce</a> section.
 
 <br>
 
@@ -158,7 +154,7 @@ The technologies used in this repository, such as Streamlit, Neo4j, and Cypher, 
 All the required packages and libraries can be automatically installed when running the following command: `pip install -r src/requirements.txt`.
 
 > [!NOTE]  
-We have tested GDI on two devices: 1) a Mac M1 Pro with 32GB unified memory (200GB/s bandwidth), a 14-core GPU, and a 16-core Neural Engine,and 2) a desktop with Intel Core i7 CPU, Nvidia GeForce RTX 4080 Super (16VRAM), and DDR5 16GB Memory. If you are running GDI on a device with lower specifications, it may take several minutes before you receive a response.
+We have tested GDI on two devices: 1) a Mac M1 Pro with 32GB unified memory (200GB/s bandwidth), a 14-core GPU, and a 16-core Neural Engine, and 2) a desktop with Intel Core i7 CPU, Nvidia GeForce RTX 4080 Super (16VRAM), and DDR5 16GB Memory. If you are running GDI on a device with lower specifications, it may take several minutes before you receive a response.
 
 <p align="right">(<a href="#top">↑ Back to Top</a>)</p>
 
@@ -184,21 +180,21 @@ docker run --name neo4j-apoc --publish=7474:7474 --publish=7687:7687 --env='NEO4
 
 ### B. Setting up Ollama
 1. For CPU only, run the following command to set up ollama: `docker run -d -v ollama:/root/.ollama -p 11434:11434 --name ollama ollama/ollama`
-- To start CPU-only Docker container, run the following command: `ollama run llama3.1`
+- To start a CPU-only Docker container, run the following command: `ollama run llama3.1`
 
-2.  For GPU Support, additional steps are required, which can be followed in [Ollama GPU Docker Guide](https://hub.docker.com/r/ollama/ollama). For a more detailed guide, please follow the steps in the [detailed guide to configure GPU support.](https://medium.com/@researchgraph/how-to-run-ollama-on-windows-8a1622525ada)
+2. For GPU Support, additional steps are required, which can be followed in [Ollama GPU Docker Guide](https://hub.docker.com/r/ollama/ollama). For a more detailed guide, please follow the steps in the [detailed guide to configure GPU support.](https://medium.com/@researchgraph/how-to-run-ollama-on-windows-8a1622525ada)
 
 ## 2. Local setup
 ###  A. Setting up Neo4j 
 1. Install [Neo4j desktop](https://neo4j.com/download/).
-2. Click on the button _Create instance_, and fill in the following details, and click on the _Create_ button:
+2. Click on the button _Create instance_, fill in the following details, and click on the _Create_ button:
 ```
 Instance name: select an instance name representing the knowledge graph (e.g., Microservices Example)
 Neo4j version: select the newest version (e.g., 2025.05.0)
 Username: neo4j
 Password: password (for your own instance, please use a secure password)
 ```
-3. On the right side bar, click on _Local instances_, and navigate to the created instance. Click on the three dots at the top right of the instance. A drop down menu appears, then click on the _Plugins_ option. 
+3. On the right side bar, click on _Local instances_, and navigate to the created instance. Click on the three dots at the top right of the instance. A drop-down menu appears, then click on the _Plugins_ option. 
 4. Search for the _APOC_ plugin and click the _Install_ button.
 5. Find the _neo4j.conf_ by copying the _path_ button in Neo4j, and click on the _conf_ folder. Click on the _neo4j.conf_ and add the following line `dbms.security.procedures.unrestricted=apoc.*` under `dbms.security.procedures.allowlist=apoc.*`.
 6. Restart the instance to finish the plugin installation by clicking on the _restart_ button.
@@ -207,7 +203,7 @@ Password: password (for your own instance, please use a secure password)
 
 ### B. Setting up Ollama
 1. Install [Ollama](https://ollama.com/).
-2. Install, and run Llama3.1 by running the following command: `ollama run llama3.1`
+2. Install and run Llama3.1 by running the following command: `ollama run llama3.1`
 
 ## 3. Running GDI
 To run GDI, please follow the steps below:
@@ -230,9 +226,17 @@ You can open GDI in your browser by navigating to http://localhost:8501.
 # 4. Usage Instructions
 Please follow the <a href="#3-installation-instructions">installation instructions</a> to run GDI. 
 
-We have provided a description of GDI's user interface in <a href="#6-related-publication">our paper</a>. A Cheat Sheet with example user questions, such as _"I want to fix a bug in [REPLACE WITH SERVICE NAME]. What are its dependencies?"_, along with guidelines (collapsable) are provided in the GDI's browser interface.  
+We have provided a description of GDI's user interface in Section III in <a href="#6-related-publication">our paper</a>. A Cheat Sheet with example user questions, such as _"I want to fix a bug in [REPLACE WITH SERVICE NAME]. What are its dependencies?"_, along with guidelines (collapsable) are provided in the GDI's browser interface.  The user can explore the knowledge graph by running `MATCH (n)-[r]->(m) RETURN n, r, m` in the query window of Neo4j. This will provide an overview of the knowledge graph. 
 
-The user can explore the knowledge graph by running `MATCH (n)-[r]->(m)RETURN n, r, m` in the query window of Neo4j. This will provide an overview of the knowledge graph. Subsequently, the user can type the question in the _input field_ and click on the _Send_ button to receive a response. The response consists of a natural language response, a corresponding Neo4j Query (which can be copied into Neo4j), and the retrieved context (which can be collapsed and expanded). Based on the answer given by GDI, the user can ask other questions following the same steps. The user can save the chat history by clicking on the _Save Session_ button. The saved files can be found in the folder [/supplementary-materials/saved-logs](GDI/supplementary-materials/saved-logs).
+1. The user selects a stakeholder-based persona prompt and the preferred LLM from the dropdown buttons in the left sidebar of GDI.
+2. The user can type the question in the _input field_ and click on the _Send_ button to receive a response.
+3. The response consists of a) a natural language response, b) a corresponding Neo4j Query (which can be copied and run into Neo4j), and c) the retrieved context (which can be copied, collapsed, and expanded).
+4. Based on the answer given by GDI, the user can ask other questions by repeating steps 2 and 3.
+5. The user can save the chat history by clicking on the _Save Session_ button. The saved files can be found in the folder [GDI/supplementary-materials/saved-logs](supplementary-materials/saved-logs).
+
+The video below provides a visual representation of steps 1, 2, and 3:
+
+https://github.com/user-attachments/assets/9eee107f-a8e9-470d-8899-1e52b4d1d6a1
 
 For the onboarding use case, we conducted a group cognitive walkthrough with participants to systematically validate GDI by reasoning through user actions and identifying potential usability issues. The steps and protocol for this session are described in Section IV in <a href="#6-related-publication">our paper</a>. 
 
@@ -248,10 +252,10 @@ For both use cases, we used [the same set of validation questions](supplementary
 # 5. Steps to Reproduce 
 In this section, we describe how to reproduce the results from the individual user-centered validation sessions of the onboarding use case.
 1. In the [GDI/supplementary-materials/onboarding/software_engineer/](/supplementary-materials/onboarding/software_engineer/) folder, we have provided the logs of the participants P1-P5 from the user-centered validation sessions. To extract the unique questions from these logs, run `python process.logs.py` in the src folder. A file is generated for each participant in the [/supplementary-materials/onboarding/software_engineer/extracted_questions](/supplementary-materials/onboarding/software_engineer/extracted_questions). 
-2. In [GDI/src/GDI.py](/src/GDI.py), we have provided comments on lines 78-85 and 91-91 to provide guidance to loop through the user questions, and reproduce the results. Note that since we are using a large language model, the answer can vary slightly from the reproduced results.
+2. In [GDI/src/GDI.py](/src/GDI.py), we have provided comments on lines 79-87 and 93-94 to provide guidance to loop through the user questions and reproduce the results. Note that since we are using a large language model, the answer can vary slightly from the reproduced results.
 3. Follow the <a href="#3-installation-instructions">installation instructions.</a> 
 4. Click on the _Send_ button. The user questions are automatically asked to GDI. Depending on your desktop, this can take a few minutes.
-5. You can save the log by clicking on the _Save Session_ button. The saved files can be found in the folder [/supplementary-materials/saved-logs](GDI/supplementary-materials/saved-logs).
+5. You can save the log by clicking on the _Save Session_ button. The saved files can be found in the folder [GDI/supplementary-materials/saved-logs](supplementary-materials/saved-logs).
 
 <p align="right">(<a href="#top">↑ Back to Top</a>)</p>
 
@@ -270,13 +274,15 @@ The artifact was created by the following authors:
 | [Delina Ly (corresponding author)](https://www.linkedin.com/in/delina-ly/) | VX Company, Utrecht University | https://orcid.org/0000-0002-7972-7530 | [dly@vxcompany.com](mailto:dly@vxcompany.com)|
 | [Sruthi Radhakrishnan](https://www.linkedin.com/in/sruthi--radhakrishnan/) | itemis, Germany | N/A | [radhakrishnan@itemis.com](mailto:radhakrishnan@itemis.com)|
 | [Dr. Fatma Başak Aydemir](https://www.uu.nl/staff/FBAydemir) | Utrecht University, The Netherlands | https://orcid.org/0000-0003-3833-3997| [f.b.aydemir@uu.nl](mailto:f.b.aydemir@uu.nl)| 
-| [Prof. dr. Fabiano Dalpiaz](https://www.uu.nl/medewerkers/FDalpiaz) | Utrecht University, The Netherlands |https://orcid.org/0000-0003-4480-3887| [f.dalpiaz@uu.nl](mailto:f.dalpiaz@uu.nl) | 
+| [Prof. Dr. Fabiano Dalpiaz](https://www.uu.nl/medewerkers/FDalpiaz) | Utrecht University, The Netherlands |https://orcid.org/0000-0003-4480-3887| [f.dalpiaz@uu.nl](mailto:f.dalpiaz@uu.nl) | 
 
 <p align="right">(<a href="#top">↑ Back to Top</a>)</p>
 
 # 8. Suggested citation
+
 If you would like to cite this artifact, we suggest using the following citation:
->[__Ly, D., Radhakrishnan, S., Aydemir, F. B., & Dalpiaz, F. (2025). DelinaLy/GDI: First release of GraphRag Dialogue Insights (v1.0). Zenodo. https://doi.org/10.5281/zenodo.15173244__](https://doi.org/10.5281/zenodo.15173244)
+
+>[__Ly, D., Radhakrishnan, S., Aydemir, F. B., & Dalpiaz, F. (2025). DelinaLy/GDI: GraphRag Dialogue Insights (v1.0). Zenodo. https://doi.org/10.5281/zenodo.15681739__](https://doi.org/10.5281/zenodo.15681739)
 
 You can also click on the "_Cite this repository_" button on the top-right menu of this repository to copy the APA and BibTeX versions of the citation.
 
