@@ -77,7 +77,7 @@ def chat_bot_invoke(chain):
     with col1:
         user_input = st.text_input("", placeholder="e.g., I want to fix a bug in [REPLACE WITH SERVICE NAME]. What are its dependencies?")
         # To reproduce the results from the user-centered validation sessions (onboarding use case), refer to "5. Steps to Reproduce" section in the README file. 
-        # 1) Comment lines 77 and 78, 2) Comment out line 81-88, and added the extracted questions in the `user_inputs` array 3) comment out line 95, and 4) run `GDI.py` and press the "Send" button.
+        # 1) Comment lines 77 and 78, 2) Comment out line 81-88, and added the extracted questions in the `user_inputs` array 3) comment out line 95, and 4) run `streamlit run GDI.py` and press the "Send" button.
         # user_inputs = 
         # [
         #     "Is there a relationship between UserService and CatalogService",
