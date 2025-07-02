@@ -26,7 +26,7 @@ The output consists of a) a natural language response to the question, b) the ge
 You can use this repository to:
 1. Interact with GDI to determine its suitability for your context.
 2. Use your own knowledge graph and query work items using GDI.
-3. Reproduce the results presented in the <a href="#6-related-publication">Related Publication</a> by following the steps outlined in the <a href="#5-steps-to-reproduce">Steps to Reproduce</a> section.
+3. Reproduce the results presented in the <a href="#6-related-publication">Related Publication</a> section by following the steps outlined in the <a href="#5-steps-to-reproduce">Steps to Reproduce</a> section.
 
 <br>
 
