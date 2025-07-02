@@ -280,12 +280,11 @@ The artifact was created by the following authors:
 
 # 8. Suggested citation
 
-If you would like to cite this artifact, we suggest using the following citation:
+If you would like to cite this artifact, we suggest using the following citation in your paper:
 
 >[__Ly, D., Radhakrishnan, S., Aydemir, F. B., & Dalpiaz, F. (2025). DelinaLy/GDI: GraphRag Dialogue Insights (v1.0). Zenodo. https://doi.org/10.5281/zenodo.15681739__](https://doi.org/10.5281/zenodo.15681739)
 
-You can also click on the "_Cite this repository_" button on the top-right menu of this repository to copy the APA and BibTeX versions of the citation.
-
+You can cite this repository by clicking on the "_Cite this repository_" button on the top-right menu of this repository to copy the APA and BibTeX versions of the citation.
 
 This repository is licensed under [the GNU GPLv3 License](./LICENSE).
 
