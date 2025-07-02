@@ -48,8 +48,7 @@ abstract: >+
   context.
   2. Connect your own knowledge graph and query work items
   using natural language.
-  3. Reproduce the results presented in the "Related
-  Publication."
+  3. Reproduce the results presented in the "Related Publication" section by following the steps outlined in the "Steps to Reproduce" section.
 
   Note: Note: We provide the open-source knowledge graph. Due to confidentiality agreements,
   we are unable to share the proprietary knowledge graph used in our study. 
