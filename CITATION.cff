@@ -1,8 +1,8 @@
 cff-version: 1.2.0
-title: GraphRAG Dialogue Insights (GDI)
+title: GraphRAG Dialogue Insights (v1.0)
 message: >-
   If you use this software, please cite it using the
-  metadata from this file.
+  metadata from this file. 
 type: software
 authors:
   - given-names: Delina
@@ -26,11 +26,11 @@ authors:
     orcid: 'https://orcid.org/0000-0003-4480-3887'
 identifiers:
   - type: doi
-    value: 10.5281/zenodo.15173244
-    description: ' The DOI of the corresponding release of GraphRAG Dialogue Insights on Zenodo.'
+    value: 10.5281/zenodo.15681739
+    description: 'The DOI of the corresponding release of GraphRAG Dialogue Insights on Zenodo.'
 repository-code: 'https://github.com/DelinaLy/GDI/'
 abstract: >+
-  This repository contains the source code of  GraphRAG
+  This repository contains the source code of GraphRAG
   Dialogue Insights (GDI). 
 
 
