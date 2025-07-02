@@ -226,7 +226,7 @@ You can open GDI in your browser by navigating to http://localhost:8501.
 # 4. Usage Instructions
 Please follow the <a href="#3-installation-instructions">installation instructions</a> to run GDI. 
 
-We have provided a description of GDI's user interface in Section III in <a href="#6-related-publication">our paper</a>. A Cheat Sheet with example user questions, such as _"I want to fix a bug in [REPLACE WITH SERVICE NAME]. What are its dependencies?"_, along with guidelines (collapsable) are provided in the GDI's browser interface.  The user can explore the knowledge graph by running `MATCH (n)-[r]->(m) RETURN n, r, m` in the query window of Neo4j. This will provide an overview of the knowledge graph. 
+We have provided a description of GDI's user interface in Section III in <a href="#6-related-publication">our paper</a>. A Cheat Sheet (collapsible) with example user questions, such as _"I want to fix a bug in [REPLACE WITH SERVICE NAME]. What are its dependencies?"_, along with guidelines are provided in the GDI's browser interface.  The user can explore the knowledge graph by running `MATCH (n)-[r]->(m) RETURN n, r, m` in the query window of Neo4j. This will provide an overview of the knowledge graph. 
 
 1. The user selects a stakeholder-based persona prompt and the preferred LLM from the dropdown buttons in the left sidebar of GDI.
 2. The user can type the question in the _input field_ and click on the _Send_ button to receive a response. The response consists of a) a natural language response, b) a corresponding Neo4j Query (which can be copied and run into Neo4j), and c) the retrieved context (which can be copied, collapsed, and expanded).
