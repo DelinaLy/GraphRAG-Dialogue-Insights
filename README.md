@@ -252,7 +252,7 @@ For both use cases, we used [the same set of validation questions](supplementary
 # 5. Steps to Reproduce 
 In this section, we describe how to reproduce the results from the individual user-centered validation sessions of the onboarding use case.
 1. In the [GDI/supplementary-materials/onboarding/software_engineer/](/supplementary-materials/onboarding/software_engineer/) folder, we have provided the logs of the participants P1-P5 from the user-centered validation sessions. To extract the unique questions from these logs, run `python process.logs.py` in the src folder. A file is generated for each participant in the [/supplementary-materials/onboarding/software_engineer/extracted_questions](/supplementary-materials/onboarding/software_engineer/extracted_questions). 
-2. In [GDI/src/GDI.py](/src/GDI.py), we have provided comments on lines 79-87 and 93-94 to provide guidance to loop through the user questions and reproduce the results. Note that since we are using a large language model, the answer can vary slightly from the reproduced results.
+2. In [GDI/src/GDI.py](/src/GDI.py), we have provided comments on lines 79-88 and 94-95 to provide guidance to loop through the user questions and reproduce the results. Note that since we are using a large language model, the answer can vary slightly from the reproduced results.
 3. Follow the <a href="#3-installation-instructions">installation instructions.</a> 
 4. Click on the _Send_ button. The user questions are automatically asked to GDI. Depending on your desktop, this can take a few minutes.
 5. You can save the log by clicking on the _Save Session_ button. The saved files can be found in the folder [GDI/supplementary-materials/saved-logs](supplementary-materials/saved-logs).
