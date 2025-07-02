@@ -226,7 +226,7 @@ We have provided a description of GDI's user interface in Section III in <a href
 
 1. The user selects a stakeholder-based persona prompt and the preferred LLM from the dropdown buttons in the left sidebar of GDI.
 2. The user can type the question in the _input field_ and click on the _Send_ button to receive a response. The response consists of a) a natural language response, b) a corresponding Neo4j Query (which can be copied and run into Neo4j), and c) the retrieved context (which can be copied, collapsed, and expanded).
-4. Based on the answer given by GDI, the user can ask other questions by repeating steps 2 and 3.
+4. Based on the answer given by GDI, the user can ask other questions by repeating steps 1 and 2.
 5. The user can save the chat history by clicking on the _Save Session_ button. The saved files can be found in the folder [GDI/supplementary-materials/saved-logs](supplementary-materials/saved-logs).
 
 The video below provides a visual representation of steps 1 and 2:
