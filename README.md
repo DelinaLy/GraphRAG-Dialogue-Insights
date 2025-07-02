@@ -23,6 +23,10 @@ The user selects a stakeholder-based persona prompt and the preferred LLM from t
 
 The output consists of a) a natural language response to the question, b) the generated query used to query the knowledge graph, c) and the retrieved context as a result of the query. 
 
+The video below provides a visual representation of the described steps:
+
+https://github.com/user-attachments/assets/9eee107f-a8e9-470d-8899-1e52b4d1d6a1
+
 You can use this repository to:
 1. Interact with GDI to determine its suitability for your context.
 2. Use your own knowledge graph and query work items using GDI.
